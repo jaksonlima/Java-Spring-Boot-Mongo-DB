@@ -1,35 +1,26 @@
-package com.jakson.workshopmongo.dominio;
+package com.jakson.workshopmongo.dto;
 
-import java.io.Serializable;
+import com.jakson.workshopmongo.dominio.Produto;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+public class ProdutoDTO {
 
-@Document(collection="produto")
-public class Produto implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
-	@Id
 	private String id;
 	private String nome;
 	private Double preco;
 
-	public Produto() {
+	public ProdutoDTO() {
 	}
 
-	public Produto(String id, String nome, Double preco) {
-		this.nome = nome;
+	public ProdutoDTO(Produto obj) {
+		id = obj.getId();
+		nome = obj.getNome();
+		preco = obj.getPreco();
+	}
+
+	public ProdutoDTO(String id, String nome, Double preco) {
 		this.id = id;
-		this.preco = preco;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
 		this.nome = nome;
+		this.preco = preco;
 	}
 
 	public String getId() {
@@ -38,6 +29,14 @@ public class Produto implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Double getPreco() {
@@ -64,7 +63,7 @@ public class Produto implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Produto other = (Produto) obj;
+		ProdutoDTO other = (ProdutoDTO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -75,7 +74,7 @@ public class Produto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Produto [nome=" + nome + ", id=" + id + ", preco=" + preco + "]";
+		return "UserDTO [id=" + id + ", nome=" + nome + ", preco=" + preco + "]";
 	}
 
 }
