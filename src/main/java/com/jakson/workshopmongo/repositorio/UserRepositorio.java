@@ -8,4 +8,6 @@ import com.jakson.workshopmongo.dominio.User;
 @Repository
 public interface UserRepositorio extends MongoRepository<User, String> {
 
+	User findOne(String id);
+
 }
