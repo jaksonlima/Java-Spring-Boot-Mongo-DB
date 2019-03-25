@@ -1,15 +1,24 @@
 package com.jakson.workshopmongo.dominio;
 
-public class Produto {
+import java.io.Serializable;
 
-	private String nome;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="produto")
+public class Produto implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
 	private String id;
-	private Integer preco;
+	private String nome;
+	private Double preco;
 
 	public Produto() {
 	}
 
-	public Produto(String nome, String id, Integer preco) {
+	public Produto(String nome, String id, Double preco) {
 		this.nome = nome;
 		this.id = id;
 		this.preco = preco;
@@ -31,11 +40,11 @@ public class Produto {
 		this.id = id;
 	}
 
-	public Integer getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(Integer preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 
