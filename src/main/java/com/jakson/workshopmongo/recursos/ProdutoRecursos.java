@@ -51,4 +51,12 @@ public class ProdutoRecursos {
 		return ResponseEntity.noContent().build();
 	}
 
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody ProdutoDTO objDTO, @PathVariable String id) {
+		Produto obj = produtoRecu.fromDTO(objDTO);
+		obj.setId(id);
+		obj = produtoRecu.update(obj);
+		return ResponseEntity.noContent().build();
+	}
+
 }

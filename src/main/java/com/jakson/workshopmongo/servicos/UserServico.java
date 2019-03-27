@@ -38,4 +38,16 @@ public class UserServico {
 		findById(id);
 		userRepo.deleteById(id);
 	}
+
+	public User update(User obj) {
+		User newOBJ = findById(obj.getId());
+		updateData(newOBJ, obj);
+		return userRepo.save(newOBJ);
+
+	}
+
+	private void updateData(User newOBJ, User obj) {
+		newOBJ.setNome(obj.getNome());
+		newOBJ.setEmail(obj.getEmail());
+	}
 }

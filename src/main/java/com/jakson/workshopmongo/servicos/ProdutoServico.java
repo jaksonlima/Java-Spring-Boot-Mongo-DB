@@ -38,4 +38,16 @@ public class ProdutoServico {
 		findById(id);
 		produtoRepo.deleteById(id);
 	}
+
+	public Produto update(Produto obj) {
+		Produto newOBJ = findById(obj.getId());
+		updateData(newOBJ, obj);
+		return produtoRepo.save(newOBJ);
+
+	}
+
+	private void updateData(Produto newOBJ, Produto obj) {
+		newOBJ.setNome(obj.getNome());
+		newOBJ.setPreco(obj.getPreco());
+	}
 }
