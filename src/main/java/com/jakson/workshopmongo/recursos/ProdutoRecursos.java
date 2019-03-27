@@ -1,21 +1,24 @@
 package com.jakson.workshopmongo.recursos;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.jakson.workshopmongo.dominio.Produto;
 import com.jakson.workshopmongo.dto.ProdutoDTO;
 import com.jakson.workshopmongo.servicos.ProdutoServico;
 
 @RestController
-@RequestMapping(value = "/produtos")
+@RequestMapping(value = "/produto")
 public class ProdutoRecursos {
 
 	@Autowired
@@ -30,8 +33,15 @@ public class ProdutoRecursos {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<ProdutoDTO> findById(@PathVariable String id) {
-		Produto produto = produtoRecu.findByID(id);
-		return ResponseEntity.ok().body(new ProdutoDTO(produto));
+		Produto obj = produtoRecu.findById(id);
+		return ResponseEntity.ok().body(new ProdutoDTO(obj));
 	}
 
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody ProdutoDTO objDTO) {
+		Produto obj = produtoRecu.fromDTO(objDTO);
+		obj = produtoRecu.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
 }

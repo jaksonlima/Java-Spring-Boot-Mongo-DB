@@ -8,6 +8,4 @@ import com.jakson.workshopmongo.dominio.Produto;
 @Repository
 public interface ProdutoRepositorio extends MongoRepository<Produto, String> {
 
-	Produto findOne(String id);
-
 }
