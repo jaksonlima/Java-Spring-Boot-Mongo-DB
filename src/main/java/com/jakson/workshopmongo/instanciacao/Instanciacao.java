@@ -43,9 +43,9 @@ public class Instanciacao implements CommandLineRunner {
 		Produto jakson1 = new Produto(null, "jakson1", 2001.0);
 		Produto jakson2 = new Produto(null, "jakson2", 2002.0);
 
-		Post post1 = new Post(null, sdf.parse("2019/03/12"), "Partiu viagem", "Vou viajar. Abraços!", maria);
-		Post post2 = new Post(null, sdf.parse("2019/03/23"), "Bom dia", "Acordei feliz hoje!", alex);
-		Post post3 = new Post(null, sdf.parse("2019/03/22"), "Boa tarde", "Otimo tarde para todos!", jac);
+		Post post1 = new Post(null, sdf.parse("2019/03/12"), "Partiu Comprar", "Comprei tv 43!", maria);
+		Post post2 = new Post(null, sdf.parse("2019/03/23"), "Bora Loja", "feliz hoje com meu not novo!", alex);
+		Post post3 = new Post(null, sdf.parse("2019/03/22"), "melhor loja", "Otimo para comprar!", jac);
 
 		userRepositorio.saveAll(Arrays.asList(maria, alex, jac));
 		produtoRepositorio.saveAll(Arrays.asList(jakson, jakson1, jakson2));
