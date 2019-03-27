@@ -33,4 +33,9 @@ public class ProdutoServico {
 	public Produto fromDTO(ProdutoDTO obj) {
 		return new Produto(obj.getId(), obj.getNome(), obj.getPreco());
 	}
+
+	public void delete(String id) {
+		findById(id);
+		produtoRepo.deleteById(id);
+	}
 }
