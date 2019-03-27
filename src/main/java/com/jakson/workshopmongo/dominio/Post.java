@@ -6,6 +6,8 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Repository;
 
+import com.jakson.workshopmongo.dto.AutorDTO;
+
 @Repository
 public class Post implements Serializable {
 
@@ -16,17 +18,17 @@ public class Post implements Serializable {
 	private Date data;
 	private String título;
 	private String corpo;
-	private User autor;
+	private AutorDTO autorDTO;
 
 	public Post() {
 	}
 
-	public Post(String id, Date data, String título, String corpo, User autor) {
+	public Post(String id, Date data, String título, String corpo, AutorDTO autorDTO) {
 		this.id = id;
 		this.data = data;
 		this.título = título;
 		this.corpo = corpo;
-		this.autor = autor;
+		this.setAutorDTO(autorDTO);
 	}
 
 	public String getId() {
@@ -61,12 +63,12 @@ public class Post implements Serializable {
 		this.corpo = corpo;
 	}
 
-	public User getAutor() {
-		return autor;
+	public AutorDTO getAutorDTO() {
+		return autorDTO;
 	}
 
-	public void setAutor(User autor) {
-		this.autor = autor;
+	public void setAutorDTO(AutorDTO autorDTO) {
+		this.autorDTO = autorDTO;
 	}
 
 	@Override
@@ -96,7 +98,8 @@ public class Post implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", data=" + data + ", título=" + título + ", corpo=" + corpo + "]";
+		return "Post [id=" + id + ", data=" + data + ", título=" + título + ", corpo=" + corpo + ", autorDTO="
+				+ autorDTO + "]";
 	}
 
 }
