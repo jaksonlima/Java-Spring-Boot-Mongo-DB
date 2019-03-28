@@ -25,5 +25,5 @@ public class URL {
 		} catch (ParseException e) {
 			return defaultValue;
 		}
-	}
+	} 
 }

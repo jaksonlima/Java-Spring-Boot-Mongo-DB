@@ -30,7 +30,7 @@ public class Instanciacao implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/HH/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/HH/dd");
 		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
 		userRepositorio.deleteAll();

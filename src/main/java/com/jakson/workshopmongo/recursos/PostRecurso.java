@@ -36,7 +36,8 @@ public class PostRecurso {
 	}
 
 	@RequestMapping(value = "/fullsearch", method = RequestMethod.GET)
-	public ResponseEntity<List<Post>> fullSearch(@RequestParam(value = "text", defaultValue = "") String text,
+	public ResponseEntity<List<Post>> fullSearch(
+			@RequestParam(value = "text", defaultValue = "") String text,
 			@RequestParam(value = "minDate", defaultValue = "") String minDate,
 			@RequestParam(value = "maxDate", defaultValue = "") String maxDate) {
 		text = URL.decodeParam(text);
