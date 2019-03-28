@@ -1,12 +1,15 @@
 package com.jakson.workshopmongo.dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Repository;
 
 import com.jakson.workshopmongo.dto.AutorDTO;
+import com.jakson.workshopmongo.dto.CommentDTO;
 
 @Repository
 public class Post implements Serializable {
@@ -19,6 +22,8 @@ public class Post implements Serializable {
 	private String título;
 	private String corpo;
 	private AutorDTO autorDTO;
+
+	private List<CommentDTO> comments = new ArrayList<CommentDTO>();
 
 	public Post() {
 	}
@@ -69,6 +74,14 @@ public class Post implements Serializable {
 
 	public void setAutorDTO(AutorDTO autorDTO) {
 		this.autorDTO = autorDTO;
+	}
+
+	public List<CommentDTO> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import com.jakson.workshopmongo.dominio.Post;
 import com.jakson.workshopmongo.dominio.Produto;
 import com.jakson.workshopmongo.dominio.User;
 import com.jakson.workshopmongo.dto.AutorDTO;
+import com.jakson.workshopmongo.dto.CommentDTO;
 import com.jakson.workshopmongo.repositorio.PostRepositorio;
 import com.jakson.workshopmongo.repositorio.ProdutoRepositorio;
 import com.jakson.workshopmongo.repositorio.UserRepositorio;
@@ -51,6 +52,13 @@ public class Instanciacao implements CommandLineRunner {
 		Post post1 = new Post(null, sdf.parse("2019/03/12"), "Partiu Comprar", "Comprei tv 43!", new AutorDTO(maria));
 		Post post2 = new Post(null, sdf.parse("2019/03/23"), "Bora Loja", "feliz hoje not novo!", new AutorDTO(maria));
 		Post post3 = new Post(null, sdf.parse("2019/03/22"), "melhor loja", "Otimo para comprar!", new AutorDTO(jac));
+
+		CommentDTO c1 = new CommentDTO("Excelente produto", sdf.parse("2019/02/11"), new AutorDTO(alex));
+		CommentDTO c2 = new CommentDTO("Produto otimo", sdf.parse("2019/02/11"), new AutorDTO(jac));
+		CommentDTO c3 = new CommentDTO("Otima qualidade", sdf.parse("2019/02/11"), new AutorDTO(maria));
+
+		post1.getComments().addAll(Arrays.asList(c1, c2));
+		post2.getComments().addAll(Arrays.asList(c3));
 
 		postRepositorio.saveAll(Arrays.asList(post1, post2, post3));
 
