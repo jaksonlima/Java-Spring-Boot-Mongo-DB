@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.jakson.workshopmongo.dominio.Post;
 import com.jakson.workshopmongo.dominio.Produto;
 import com.jakson.workshopmongo.dto.ProdutoDTO;
 import com.jakson.workshopmongo.servicos.ProdutoServico;
 
 @RestController
-@RequestMapping(value = "/produto")
+@RequestMapping(value = "/produtos")
 public class ProdutoRecursos {
 
 	@Autowired
@@ -59,4 +60,9 @@ public class ProdutoRecursos {
 		return ResponseEntity.noContent().build();
 	}
 
+	@RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+		Produto obj = produtoRecu.findById(id);
+		return ResponseEntity.ok().body(obj.getPosts());
+	}
 }

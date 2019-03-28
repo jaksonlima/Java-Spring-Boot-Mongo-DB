@@ -42,23 +42,27 @@ public class Instanciacao implements CommandLineRunner {
 
 		userRepositorio.saveAll(Arrays.asList(maria, alex, jac));
 
-		Produto jakson = new Produto(null, "jakson", 2000.0);
-		Produto jakson1 = new Produto(null, "jakson1", 2001.0);
-		Produto jakson2 = new Produto(null, "jakson2", 2002.0);
-
-		Post post1 = new Post(null, sdf.parse("2019/03/12"), "Partiu Comprar", "Comprei tv 43!", new AutorDTO(maria));
-		Post post2 = new Post(null, sdf.parse("2019/03/23"), "Bora Loja", "feliz hoje not novo!", new AutorDTO(alex));
-		Post post3 = new Post(null, sdf.parse("2019/03/22"), "melhor loja", "Otimo para comprar!", new AutorDTO(jac));
+		Produto jakson = new Produto(null, "Desktop", 2000.0);
+		Produto jakson1 = new Produto(null, "HD Externo", 2001.0);
+		Produto jakson2 = new Produto(null, "Mouse", 2002.0);
 
 		produtoRepositorio.saveAll(Arrays.asList(jakson, jakson1, jakson2));
+
+		Post post1 = new Post(null, sdf.parse("2019/03/12"), "Partiu Comprar", "Comprei tv 43!", new AutorDTO(maria));
+		Post post2 = new Post(null, sdf.parse("2019/03/23"), "Bora Loja", "feliz hoje not novo!", new AutorDTO(maria));
+		Post post3 = new Post(null, sdf.parse("2019/03/22"), "melhor loja", "Otimo para comprar!", new AutorDTO(jac));
+
 		postRepositorio.saveAll(Arrays.asList(post1, post2, post3));
 
-		maria.getPosts().addAll(Arrays.asList(post1, post2, post3));
+		maria.getPosts().addAll(Arrays.asList(post1, post2));
 		userRepositorio.save(maria);
-//		alex.getPosts().addAll(Arrays.asList(post1, post2, post3));
-//		userRepositorio.save(alex);
-		jac.getPosts().addAll(Arrays.asList(post1, post2, post3));
+		jac.getPosts().addAll(Arrays.asList(post3));
 		userRepositorio.save(jac);
+
+		jakson.getPosts().addAll(Arrays.asList(post1, post2));
+		produtoRepositorio.save(jakson);
+		jakson1.getPosts().addAll(Arrays.asList(post3));
+		produtoRepositorio.save(jakson1);
 	}
 
 }
