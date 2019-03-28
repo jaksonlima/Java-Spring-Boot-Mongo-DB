@@ -19,7 +19,7 @@ public class Post implements Serializable {
 	@Id
 	private String id;
 	private Date data;
-	private String título;
+	private String title;
 	private String corpo;
 	private AutorDTO autorDTO;
 
@@ -31,7 +31,7 @@ public class Post implements Serializable {
 	public Post(String id, Date data, String título, String corpo, AutorDTO autorDTO) {
 		this.id = id;
 		this.data = data;
-		this.título = título;
+		this.title = título;
 		this.corpo = corpo;
 		this.setAutorDTO(autorDTO);
 	}
@@ -53,11 +53,11 @@ public class Post implements Serializable {
 	}
 
 	public String getTítulo() {
-		return título;
+		return title;
 	}
 
 	public void setTítulo(String título) {
-		this.título = título;
+		this.title = título;
 	}
 
 	public String getCorpo() {
@@ -111,8 +111,8 @@ public class Post implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", data=" + data + ", título=" + título + ", corpo=" + corpo + ", autorDTO="
-				+ autorDTO + "]";
+		return "Post [id=" + id + ", data=" + data + ", título=" + title + ", corpo=" + corpo + ", autorDTO=" + autorDTO
+				+ "]";
 	}
 
 }
